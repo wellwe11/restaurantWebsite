@@ -1,6 +1,6 @@
 export * from "./index.js";
 
-// Create generic element
+// factory function for elements
 export const CreateElementFunction = (type, elementToAppend, options = {}) => {
   const el = document.createElement(type);
   elementToAppend.appendChild(el);
@@ -13,8 +13,7 @@ export const CreateElementFunction = (type, elementToAppend, options = {}) => {
   };
 };
 
-// define placement of element
-
+// define values for elements
 export const manageAttributes = (type, elementToAppend, name, styles) => {
   const newEl = CreateElementFunction(type, elementToAppend, {
     styles,
@@ -23,8 +22,7 @@ export const manageAttributes = (type, elementToAppend, name, styles) => {
   return newEl;
 };
 
-// create secondary factory function to simplify
-
+// pre-defined values for generic elements
 const values = () => {
   const flexValues = {
     display: "flex",
@@ -63,8 +61,6 @@ export const content = manageAttributes("div", document.body, "", {
   alignItems: "center",
 });
 
-// display: flex etc. for header & navbar
-
 const homeBtn = manageAttributes(
   "button",
   navBar.el,
@@ -86,6 +82,7 @@ const infoBtn = manageAttributes(
   values().buttonValues
 );
 
+// load specific items on button-click
 export async function loadMenu() {
   try {
     const module = await import("./homeTab.js");
