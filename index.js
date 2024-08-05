@@ -1,28 +1,18 @@
-<<<<<<< HEAD
 export * from "./index.js";
 
 // Create generic element
 export const CreateElementFunction = (
-=======
-// Create generic element
-const CreateElementFunction = (
->>>>>>> 43dc34736e9c651af709d5ff821f2fb7f407fd1d
   type,
   width = "",
   height = "",
   elementToAppend,
-<<<<<<< HEAD
   ...addedMethods
-=======
-  dynamicMethod
->>>>>>> 43dc34736e9c651af709d5ff821f2fb7f407fd1d
 ) => {
   const el = document.createElement(type);
   el.style.width = width;
   el.style.height = height;
   elementToAppend.appendChild(el);
 
-<<<<<<< HEAD
   addedMethods.forEach((method) => {
     Object.keys(method).forEach((key) => {
       el[key] = method[key].bind(el);
@@ -138,62 +128,6 @@ homeBtn.el.addEventListener("click", loadMenu);
 //add effects => hover, click, whileActive(on current tab), mouseOver,
 
 //
-=======
-  return {
-    el,
-    setColor(eleColor) {
-      el.style.color = eleColor;
-    },
-    setBackgroundColor(eleBackgroundColor) {
-      el.style.backgroundColor = eleBackgroundColor;
-    },
-    setText(eleText) {
-      el.innerText = eleText;
-    },
-    [dynamicMethod]: dynamicMethod ? () => {} : undefined,
-    newMethod: () => {},
-  };
-};
-
-// create & specify buttons specifications
-const createButton = (btnName, color, backgroundclr, text) => {
-  btnName.setColor(color),
-    btnName.setBackgroundColor(backgroundclr),
-    btnName.setText(text);
-};
-
-const flexBoxCenter = (...elements) => {
-  elements.forEach((element) => {
-    element.style.display = "flex";
-    element.style.justifyContent = "center";
-  });
-};
-
-const header = CreateElementFunction("header", "", "", document.body);
-const navBar = CreateElementFunction("nav", "", "", header.el);
-
-flexBoxCenter(header.el, navBar.el);
-
-const Button = (buttonWidth, buttonHeight, parent) => {
-  return CreateElementFunction("button", buttonWidth, buttonHeight, parent);
-};
-
-const buttonAttributes = (buttonText) => {
-  const button = Button("150px", "55px", navBar.el);
-  createButton(button, "black", "white", buttonText);
-  return button;
-};
-
-const homeBtn = buttonAttributes("Home");
-const menuBtn = buttonAttributes("Menu");
-const infoBtn = buttonAttributes("info");
-
-// decide on what types of elements we need
-// decide on functions they'll do
-
-// ----------------------------------------------------------
-
->>>>>>> 43dc34736e9c651af709d5ff821f2fb7f407fd1d
 // ------ v Home Tab v --------------------------------------
 // Basic divs with quick basic information about restaurant
 // --quick story
