@@ -1,107 +1,91 @@
 export * from "./index.js";
 
 // Create generic element
-export const CreateElementFunction = (
-  type,
-  elementToAppend,
-  ...addedMethods
-) => {
+export const CreateElementFunction = (type, elementToAppend, options = {}) => {
   const el = document.createElement(type);
   elementToAppend.appendChild(el);
 
-  addedMethods.forEach((method) => {
-    Object.keys(method).forEach((key) => {
-      el[key] = method[key].bind(el);
-    });
-  });
-
+  if (options.styles) {
+    Object.assign(el.style, options.styles);
+  }
   return {
     el,
   };
 };
 
 // define placement of element
-export const moveElements = (display, justify, flexDir, align) => {
-  const relatedEles = (...elements) => {
-    elements.forEach((element) => {
-      element.style.display = display;
-      element.style.justifyContent = justify;
-      element.style.alignItems = align;
-      element.style.flexDirection = flexDir;
-    });
-  };
 
-  // might add other methods
-
-  return {
-    relatedEles,
-  };
+export const manageAttributes = (type, elementToAppend, name, styles) => {
+  const newEl = CreateElementFunction(type, elementToAppend, {
+    styles,
+  });
+  newEl.el.textContent = name;
+  return newEl;
 };
 
 // create secondary factory function to simplify
-export const header = CreateElementFunction("header", document.body);
-export const navBar = CreateElementFunction("nav", header.el);
-export const content = CreateElementFunction("div", document.body);
 
-// display: flex etc. for header & navbar
-moveElements("flex", "center", "row", "").relatedEles(header.el, navBar.el);
+const values = () => {
+  const flexValues = {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
+  };
 
-// CSS attribute creator. Defined in element with createElementFunction.
-function dynamicFunction(...dynamicName) {
-  const methods = {};
+  const buttonValues = {
+    width: "150px",
+    height: "55px",
+    color: "black",
+    backgroundColor: "white",
+  };
 
-  // same as element.style.attribute = value;
-  dynamicName.forEach((name) => {
-    methods[name] = function (value) {
-      this.style[name] = value;
-    };
-  });
-  return methods;
-}
+  return {
+    flexValues,
+    buttonValues,
+  };
+};
 
-const methods = dynamicFunction(
-  "width",
-  "height",
-  "backgroundColor",
-  "color",
-  "borderRadius"
+export const header = manageAttributes(
+  "header",
+  document.body,
+  "",
+  values().flexValues
+);
+export const navBar = manageAttributes(
+  "nav",
+  header.el,
+  "",
+  values().flexValues
+);
+export const content = manageAttributes(
+  "div",
+  document.body,
+  "",
+  values().flexValues
 );
 
-// create generic attributeFunction here
+// display: flex etc. for header & navbar
 
-// CSS attribute function (will make generic function later on)
-export const menuAttributes = (text, color, backgroundcolor) => {
-  const menuItem = CreateElementFunction("div", content.el, methods);
+const homeBtn = manageAttributes(
+  "button",
+  navBar.el,
+  "Home",
+  values().buttonValues
+);
 
-  menuItem.el.width("600px");
-  menuItem.el.height("300px");
+const menuBtn = manageAttributes(
+  "button",
+  navBar.el,
+  "Menu",
+  values().buttonValues
+);
 
-  menuItem.el.textContent = text;
-  menuItem.el.color(color);
-  menuItem.el.backgroundColor(backgroundcolor);
-  menuItem.el.borderRadius("3.5px");
-
-  return menuItem;
-};
-
-// CSS attribute function (will make generic function later on)
-const buttonAttributes = (text) => {
-  const button = CreateElementFunction("button", navBar.el, methods);
-
-  button.el.width("150px");
-  button.el.height("55px");
-
-  button.el.textContent = text;
-  button.el.backgroundColor("white");
-  button.el.color("black");
-
-  return button;
-};
-
-// export to new file where all main-components will load
-export const homeBtn = buttonAttributes("Home");
-export const menuBtn = buttonAttributes("Menu");
-export const infoBtn = buttonAttributes("Info");
+const infoBtn = manageAttributes(
+  "button",
+  navBar.el,
+  "Info",
+  values().buttonValues
+);
 
 export async function loadMenu() {
   try {
@@ -109,6 +93,7 @@ export async function loadMenu() {
 
     if (module) {
       module.menuItemOne;
+      module.menuItemTwo;
     } else {
       console.error("button dont work senior");
     }
@@ -139,3 +124,16 @@ homeBtn.el.addEventListener("click", loadMenu);
 // ---name & title
 // ---phone number
 // ---email
+
+// // CSS attribute creator. Defined in element with createElementFunction.
+// function dynamicFunction(...dynamicName) {
+//   const methods = {};
+
+//   // same as element.style.attribute = value;
+//   dynamicName.forEach((name) => {
+//     methods[name] = function (value) {
+//       this.style[name] = value;
+//     };
+//   });
+// return methods;
+// }
