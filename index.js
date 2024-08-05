@@ -3,14 +3,10 @@ export * from "./index.js";
 // Create generic element
 export const CreateElementFunction = (
   type,
-  width = "",
-  height = "",
   elementToAppend,
   ...addedMethods
 ) => {
   const el = document.createElement(type);
-  el.style.width = width;
-  el.style.height = height;
   elementToAppend.appendChild(el);
 
   addedMethods.forEach((method) => {
@@ -24,6 +20,7 @@ export const CreateElementFunction = (
   };
 };
 
+// define placement of element
 export const moveElements = (display, justify, flexDir, align) => {
   const relatedEles = (...elements) => {
     elements.forEach((element) => {
@@ -42,9 +39,9 @@ export const moveElements = (display, justify, flexDir, align) => {
 };
 
 // create secondary factory function to simplify
-export const header = CreateElementFunction("header", "", "", document.body);
-export const navBar = CreateElementFunction("nav", "", "", header.el);
-export const content = CreateElementFunction("div", "", "", document.body);
+export const header = CreateElementFunction("header", document.body);
+export const navBar = CreateElementFunction("nav", header.el);
+export const content = CreateElementFunction("div", document.body);
 
 // display: flex etc. for header & navbar
 moveElements("flex", "center", "row", "").relatedEles(header.el, navBar.el);
@@ -62,32 +59,38 @@ function dynamicFunction(...dynamicName) {
   return methods;
 }
 
-const methods = dynamicFunction("backgroundColor", "color");
+const methods = dynamicFunction(
+  "width",
+  "height",
+  "backgroundColor",
+  "color",
+  "borderRadius"
+);
+
+// create generic attributeFunction here
+
 // CSS attribute function (will make generic function later on)
 export const menuAttributes = (text, color, backgroundcolor) => {
-  const menuItem = CreateElementFunction(
-    "div",
-    "600px",
-    "300px",
-    content.el,
-    methods
-  );
+  const menuItem = CreateElementFunction("div", content.el, methods);
+
+  menuItem.el.width("600px");
+  menuItem.el.height("300px");
 
   menuItem.el.textContent = text;
   menuItem.el.color(color);
   menuItem.el.backgroundColor(backgroundcolor);
+  menuItem.el.borderRadius("3.5px");
+
   return menuItem;
 };
 
 // CSS attribute function (will make generic function later on)
 const buttonAttributes = (text) => {
-  const button = CreateElementFunction(
-    "button",
-    "150px",
-    "55px",
-    navBar.el,
-    methods
-  );
+  const button = CreateElementFunction("button", navBar.el, methods);
+
+  button.el.width("150px");
+  button.el.height("55px");
+
   button.el.textContent = text;
   button.el.backgroundColor("white");
   button.el.color("black");
@@ -121,18 +124,12 @@ homeBtn.el.addEventListener("click", loadMenu);
 // link them & import/export
 
 // index.js still need more elements. Add them later:
-// Each individual button needs to have eventListener.
-// Each button needs to lead to whatever tab it's directed.
-// needs to be active on all 3 tabs
+// -Each individual button needs to have eventListener.
+// -Each button needs to lead to whatever tab it's directed.
+// -needs to be active on all 3 tabs
 
 //add effects => hover, click, whileActive(on current tab), mouseOver,
 
-//
-// ------ v Home Tab v --------------------------------------
-// Basic divs with quick basic information about restaurant
-// --quick story
-// --opening hours
-// --address
 // ------ v Menu Tab v --------------------------------------
 // --item dish 1
 // --item dish 2
