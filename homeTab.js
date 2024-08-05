@@ -24,18 +24,3 @@ export const menuItemTwo = index.manageAttributes(
     textAlign: "center",
   }
 );
-// export const menuItemTwo = index.menuAttributes(
-//   "Opening Hours",
-//   "yellow",
-//   "blue"
-// );
-// export const menuItemThree = index.menuAttributes(
-//   "Address",
-//   "yellow",
-//   "orange"
-// );
-
-// // centralize menuItems parent
-// index
-//   .moveElements("flex", "center", "column", "center", "10px")
-//   .relatedEles(index.content.el);

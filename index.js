@@ -29,7 +29,6 @@ const values = () => {
   const flexValues = {
     display: "flex",
     justifyContent: "center",
-    flexDirection: "row",
   };
 
   const buttonValues = {
@@ -57,12 +56,12 @@ export const navBar = manageAttributes(
   "",
   values().flexValues
 );
-export const content = manageAttributes(
-  "div",
-  document.body,
-  "",
-  values().flexValues
-);
+export const content = manageAttributes("div", document.body, "", {
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+});
 
 // display: flex etc. for header & navbar
 
