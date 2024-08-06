@@ -14,12 +14,38 @@ export const CreateElementFunction = (type, elementToAppend, options = {}) => {
 };
 
 // define values for elements
-export const manageAttributes = (type, elementToAppend, name, styles) => {
+export const ManageAttributes = (type, elementToAppend, name, styles) => {
   const newEl = CreateElementFunction(type, elementToAppend, {
     styles,
   });
   newEl.el.textContent = name;
   return newEl;
+};
+
+// extends ManageAttributes() for buttons
+const designBtn = (text) => {
+  const button = ManageAttributes(
+    "button",
+    navBar.el,
+    text,
+    values().buttonValues
+  );
+
+  return button;
+};
+
+const hoverState = (...buttons) => {
+  buttons.forEach((button) =>
+    button.el.addEventListener("mouseover", () => {
+      button.el.style.backgroundColor = "black";
+    })
+  );
+
+  buttons.forEach((button) =>
+    button.el.addEventListener("mouseout", () => {
+      button.el.style.backgroundColor = "white";
+    })
+  );
 };
 
 // pre-defined values for generic elements
@@ -33,7 +59,12 @@ const values = () => {
     width: "150px",
     height: "55px",
     color: "black",
-    backgroundColor: "white",
+    backgroundColor: "88C5E9",
+    border: "1px solid white",
+    borderRadius: "3px",
+    margin: "3px",
+    marginTop: "-3px",
+    cursor: "pointer",
   };
 
   return {
@@ -42,45 +73,30 @@ const values = () => {
   };
 };
 
-export const header = manageAttributes(
+export const header = ManageAttributes(
   "header",
   document.body,
   "",
   values().flexValues
 );
-export const navBar = manageAttributes(
+export const navBar = ManageAttributes(
   "nav",
   header.el,
   "",
   values().flexValues
 );
-export const content = manageAttributes("div", document.body, "", {
+export const content = ManageAttributes("div", document.body, "", {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
 });
 
-const homeBtn = manageAttributes(
-  "button",
-  navBar.el,
-  "Home",
-  values().buttonValues
-);
+const homeBtn = designBtn("home");
+const menuBtn = designBtn("Menu");
+const infoBtn = designBtn("Info");
 
-const menuBtn = manageAttributes(
-  "button",
-  navBar.el,
-  "Menu",
-  values().buttonValues
-);
-
-const infoBtn = manageAttributes(
-  "button",
-  navBar.el,
-  "Info",
-  values().buttonValues
-);
+hoverState(homeBtn, menuBtn, infoBtn);
 
 // load specific items on button-click
 export async function loadMenu() {
@@ -90,6 +106,7 @@ export async function loadMenu() {
     if (module) {
       module.menuItemOne;
       module.menuItemTwo;
+      module.menuItemThree;
     } else {
       console.error("button dont work senior");
     }
