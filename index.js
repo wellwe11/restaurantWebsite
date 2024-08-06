@@ -22,7 +22,7 @@ export const ManageAttributes = (type, elementToAppend, name, styles) => {
   return newEl;
 };
 
-// extends ManageAttributes() for buttons
+// extends & specifies ManageAttributes() for buttons
 const designBtn = (text) => {
   const button = ManageAttributes(
     "button",
@@ -33,17 +33,17 @@ const designBtn = (text) => {
 
   return button;
 };
-
-const hoverState = (...buttons) => {
+// hover for buttons
+const hoverState = (colorOne, colorTwo, ...buttons) => {
   buttons.forEach((button) =>
     button.el.addEventListener("mouseover", () => {
-      button.el.style.backgroundColor = "black";
+      button.el.style.backgroundColor = colorOne;
     })
   );
 
   buttons.forEach((button) =>
     button.el.addEventListener("mouseout", () => {
-      button.el.style.backgroundColor = "white";
+      button.el.style.backgroundColor = colorTwo;
     })
   );
 };
@@ -59,7 +59,7 @@ const values = () => {
     width: "150px",
     height: "55px",
     color: "black",
-    backgroundColor: "88C5E9",
+    backgroundColor: "#88C5E9",
     border: "1px solid white",
     borderRadius: "3px",
     margin: "3px",
@@ -96,7 +96,7 @@ const homeBtn = designBtn("home");
 const menuBtn = designBtn("Menu");
 const infoBtn = designBtn("Info");
 
-hoverState(homeBtn, menuBtn, infoBtn);
+hoverState("#6B9CC4", "#88C5E9", homeBtn, menuBtn, infoBtn);
 
 // load specific items on button-click
 export async function loadMenu() {
