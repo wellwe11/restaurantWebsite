@@ -1,7 +1,10 @@
+// need to move code into another folder.
+// index.js should only load all codes
+
 export * from "./index.js";
 
 // factory function for elements
-export const CreateElementFunction = (type, elementToAppend, options = {}) => {
+const CreateElementFunction = (type, elementToAppend, options = {}) => {
   const el = document.createElement(type);
   elementToAppend.appendChild(el);
 
@@ -13,8 +16,8 @@ export const CreateElementFunction = (type, elementToAppend, options = {}) => {
   };
 };
 
-// define values for elements
-export const ManageAttributes = (type, elementToAppend, name, styles) => {
+// define values for element
+const ManageAttributes = (type, elementToAppend, name, styles) => {
   const newEl = CreateElementFunction(type, elementToAppend, {
     styles,
   });
@@ -22,7 +25,7 @@ export const ManageAttributes = (type, elementToAppend, name, styles) => {
   return newEl;
 };
 
-// extends & specifies ManageAttributes() for buttons
+// extends ManageAttributes() & specifies buttons
 const designBtn = (text) => {
   const button = ManageAttributes(
     "button",
@@ -33,7 +36,35 @@ const designBtn = (text) => {
 
   return button;
 };
-// hover for buttons
+
+// extends ManageAttributes() & specifies menuItems
+export const createMenuItem = (text) => {
+  const item = ManageAttributes(
+    "div",
+    content.el,
+    text,
+    values().menuItemValues
+  );
+
+  return item;
+};
+
+export const toggleElement = () => {
+  const displayElement = (...elements) => {
+    elements.forEach((element) => (element.el.style.display = "block"));
+  };
+
+  const hideElement = (...elements) => {
+    elements.forEach((element) => (element.el.style.display = "none"));
+  };
+
+  return {
+    displayElement,
+    hideElement,
+  };
+};
+
+// :hover for buttons
 const hoverState = (colorOne, colorTwo, ...buttons) => {
   buttons.forEach((button) =>
     button.el.addEventListener("mouseover", () => {
@@ -67,25 +98,33 @@ const values = () => {
     cursor: "pointer",
   };
 
+  const menuItemValues = {
+    display: "none",
+    width: "600px",
+    height: "300px",
+    color: "black",
+    backgroundColor: "#88C5E9",
+    textAlign: "center",
+    border: "1px solid white",
+    borderRadius: "3px",
+    margin: "3px",
+  };
+
   return {
     flexValues,
     buttonValues,
+    menuItemValues,
   };
 };
 
-export const header = ManageAttributes(
+const header = ManageAttributes(
   "header",
   document.body,
   "",
   values().flexValues
 );
-export const navBar = ManageAttributes(
-  "nav",
-  header.el,
-  "",
-  values().flexValues
-);
-export const content = ManageAttributes("div", document.body, "", {
+const navBar = ManageAttributes("nav", header.el, "", values().flexValues);
+const content = ManageAttributes("div", document.body, "", {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
@@ -98,24 +137,60 @@ const infoBtn = designBtn("Info");
 
 hoverState("#6B9CC4", "#88C5E9", homeBtn, menuBtn, infoBtn);
 
-// load specific items on button-click
-export async function loadMenu() {
-  try {
-    const module = await import("./homeTab.js");
+let homeOn = false;
+let menuOn = false;
+let infoOn = false;
 
-    if (module) {
-      module.menuItemOne;
-      module.menuItemTwo;
-      module.menuItemThree;
-    } else {
-      console.error("button dont work senior");
+export async function fetchModule(moduleName) {
+  let module;
+  try {
+    if (moduleName === "homeTab") {
+      module = await import("./homeTab.js");
+      homeOn
+        ? toggleElement().displayElement(module.homeItemOne)
+        : toggleElement().hideElement(module.homeItemOne);
+    } else if (moduleName === "menuTab") {
+      module = await import("./menuTab.js");
+      menuOn
+        ? toggleElement().displayElement(module.menuItemOne)
+        : toggleElement().hideElement(module.menuItemOne);
+    } else if (moduleName === "infoTab") {
+      module = await import("./infoTab.js");
+      infoOn
+        ? toggleElement().displayElement(module.infoItemOne)
+        : toggleElement().hideElement(module.infoItemOne);
     }
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Error:", error);
   }
 }
 
-homeBtn.el.addEventListener("click", loadMenu);
+homeBtn.el.addEventListener("click", () => {
+  homeOn = true;
+  menuOn = false;
+  infoOn = false;
+  fetchModule("homeTab");
+  fetchModule("menuTab");
+  fetchModule("infoTab");
+});
+
+menuBtn.el.addEventListener("click", () => {
+  homeOn = false;
+  menuOn = true;
+  infoOn = false;
+  fetchModule("homeTab");
+  fetchModule("menuTab");
+  fetchModule("infoTab");
+});
+
+infoBtn.el.addEventListener("click", () => {
+  homeOn = false;
+  menuOn = false;
+  infoOn = true;
+  fetchModule("homeTab");
+  fetchModule("menuTab");
+  fetchModule("infoTab");
+});
 
 // create 3 different boiler plates for each tab:
 // all using the same html build

@@ -1,34 +1,18 @@
 import * as index from "./index.js";
 export * from "./homeTab.js";
 
-const genericMenuItem = {
-  width: "600px",
-  height: "300px",
-  color: "AFDCEC",
-  backgroundColor: "#88C5E9",
-  textAlign: "center",
-  border: "1px solid white",
-  borderRadius: "3px",
-  margin: "3px",
-};
+const menuText = `Hey and welcome to our beautiful restaurant.
+Here you'll find all sort of delicious treats, foods & drinks!
+`;
 
-export const menuItemOne = index.ManageAttributes(
-  "div",
-  index.content.el,
-  "some text",
-  genericMenuItem
-);
+const menuInfo = `We'd love to hear from you. Please contact us at:
+Phone Number: +1231231223
+Email: SomeRandomMail@yahoo.com
+`;
 
-export const menuItemTwo = index.ManageAttributes(
-  "div",
-  index.content.el,
-  "some text",
-  genericMenuItem
-);
+export const homeItemOne = index.createMenuItem("HomeTab");
+export const homeItemTwo = index.createMenuItem("");
+export const homeItemThree = index.createMenuItem("");
 
-export const menuItemThree = index.ManageAttributes(
-  "div",
-  index.content.el,
-  "some text",
-  genericMenuItem
-);
+// need to fix the texts so they look appealing
+// need to style the texts too
