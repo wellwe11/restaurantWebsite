@@ -137,28 +137,60 @@ const infoBtn = designBtn("Info");
 
 hoverState("#6B9CC4", "#88C5E9", homeBtn, menuBtn, infoBtn);
 
-let homeOn = false;
-let menuOn = false;
-let infoOn = false;
+const fetch = (...modules) => {
+  modules.forEach((thisModule) => fetchModule(thisModule));
+};
+
+const allModules = ["homeTab", "menuTab", "infoTab"];
+
+const booleanValues = {
+  homeOn: false,
+  menuOn: false,
+  infoOn: false,
+};
 
 export async function fetchModule(moduleName) {
   let module;
   try {
     if (moduleName === "homeTab") {
       module = await import("./homeTab.js");
-      homeOn
-        ? toggleElement().displayElement(module.homeItemOne)
-        : toggleElement().hideElement(module.homeItemOne);
+      booleanValues.homeOn
+        ? toggleElement().displayElement(
+            module.homeItemOne,
+            module.homeItemTwo,
+            module.homeItemThree
+          )
+        : toggleElement().hideElement(
+            module.homeItemOne,
+            module.homeItemTwo,
+            module.homeItemThree
+          );
     } else if (moduleName === "menuTab") {
       module = await import("./menuTab.js");
-      menuOn
-        ? toggleElement().displayElement(module.menuItemOne)
-        : toggleElement().hideElement(module.menuItemOne);
+      booleanValues.menuOn
+        ? toggleElement().displayElement(
+            module.menuItemOne,
+            module.menuItemTwo,
+            module.menuItemThree
+          )
+        : toggleElement().hideElement(
+            module.menuItemOne,
+            module.menuItemTwo,
+            module.menuItemThree
+          );
     } else if (moduleName === "infoTab") {
       module = await import("./infoTab.js");
-      infoOn
-        ? toggleElement().displayElement(module.infoItemOne)
-        : toggleElement().hideElement(module.infoItemOne);
+      booleanValues.infoOn
+        ? toggleElement().displayElement(
+            module.infoItemOne,
+            module.infoItemTwo,
+            module.infoItemThree
+          )
+        : toggleElement().hideElement(
+            module.infoItemOne,
+            module.infoItemTwo,
+            module.infoItemThree
+          );
     }
   } catch (error) {
     console.error("Error:", error);
@@ -166,30 +198,24 @@ export async function fetchModule(moduleName) {
 }
 
 homeBtn.el.addEventListener("click", () => {
-  homeOn = true;
-  menuOn = false;
-  infoOn = false;
-  fetchModule("homeTab");
-  fetchModule("menuTab");
-  fetchModule("infoTab");
+  booleanValues.homeOn = true;
+  booleanValues.menuOn = false;
+  booleanValues.infoOn = false;
+  fetch(...allModules);
 });
 
 menuBtn.el.addEventListener("click", () => {
-  homeOn = false;
-  menuOn = true;
-  infoOn = false;
-  fetchModule("homeTab");
-  fetchModule("menuTab");
-  fetchModule("infoTab");
+  booleanValues.homeOn = false;
+  booleanValues.menuOn = true;
+  booleanValues.infoOn = false;
+  fetch(...allModules);
 });
 
 infoBtn.el.addEventListener("click", () => {
-  homeOn = false;
-  menuOn = false;
-  infoOn = true;
-  fetchModule("homeTab");
-  fetchModule("menuTab");
-  fetchModule("infoTab");
+  booleanValues.homeOn = false;
+  booleanValues.menuOn = false;
+  booleanValues.infoOn = true;
+  fetch(...allModules);
 });
 
 // create 3 different boiler plates for each tab:
