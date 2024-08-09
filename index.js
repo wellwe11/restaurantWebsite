@@ -1,7 +1,7 @@
 import { hoverState, toggleElement } from "./scripts.js";
 import { homeBtn, menuBtn, infoBtn } from "./ui.js";
 
-hoverState("rgba(240, 240, 240, 0.8)", "#ffffff", homeBtn, menuBtn, infoBtn);
+hoverState(homeBtn, menuBtn, infoBtn);
 
 const fetch = (...modules) => {
   modules.forEach((thisModule) => fetchModule(thisModule));

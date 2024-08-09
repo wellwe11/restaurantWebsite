@@ -30,7 +30,7 @@ export const toggleElement = () => {
 };
 
 // :hover state for buttons
-export const hoverState = (colorOne, colorTwo, ...buttons) => {
+export const hoverState = (...buttons) => {
   buttons.forEach((button) => {
     button.el.addEventListener("mouseover", () => {
       button.el.style.backgroundSize = "0 0.15em, 100% 0.15em";
@@ -44,18 +44,13 @@ export const hoverState = (colorOne, colorTwo, ...buttons) => {
 
 // Pre-defined values for generic elements
 export const values = () => {
-  const flexValues = {
-    display: "flex",
-    justifyContent: "center",
-  };
-
   const buttonValues = {
     width: "49px",
-    height: "27px",
+    height: "22px",
     color: "black",
     fontSize: "15px",
     backgroundColor: "#ffffff",
-    margin: "20px",
+    margin: "25px",
     cursor: "pointer",
     border: "none",
 
@@ -76,7 +71,7 @@ export const values = () => {
     width: "600px",
     height: "300px",
     color: "rgba(220, 220, 220, 0.9)",
-    backgroundColor: "rgba(0, 0, 0, 0.86)",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
     textAlign: "center",
     borderRadius: "3px",
     margin: "3px",
@@ -89,5 +84,5 @@ export const values = () => {
     height: "70px",
   };
 
-  return { flexValues, buttonValues, menuItemValues, uiItems };
+  return { buttonValues, menuItemValues, uiItems };
 };
