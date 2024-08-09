@@ -1,33 +1,85 @@
 import { designBtn } from "./extendedUI";
-import { ManageAttributes, values } from "./scripts";
-import Wallpaper from "./wallpaper.jpeg";
+import { ManageAttributes, scrollState, values } from "./scripts";
+import("./menuTab");
+// import Wallpaper from "./wallpaper.jpeg";
 
 // In another module or file
 export const header = ManageAttributes(
   "header",
   document.body,
   "",
-  values().uiItems && { backgroundColor: "#ffffff" }
+  values().uiItems && {
+    backgroundColor: "#ffffff",
+  }
 );
+
+export const container = ManageAttributes("div", document.body, "", {
+  display: "flex",
+});
 
 export const navBar = ManageAttributes("nav", header.el, "", {
   display: "flex",
-  justifyContent: "end",
+  justifyContent: "start",
   alignItems: "center",
-  height: "53px",
+  height: "7.5vh",
 });
 
-export const content = ManageAttributes("div", document.body, "", {
+// contents size & overflow
+export const content = ManageAttributes("div", container.el, "", {
+  display: "block",
+  backgroundColor: "#ab3434",
+  width: "60%",
+  height: "85vh",
+  overflowY: "hidden",
+  msOverflowStyle: "none",
+  scrollbarWidth: "none",
+  borderTop: "1px solid black",
+  borderBottom: "1px solid black",
+  borderRadius: "1px",
+});
+
+// contents positioning
+export const contentContainer = ManageAttributes("div", content.el, "", {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
 });
 
-export const footer = ManageAttributes("footer", document.body, "", {
+// contents size & overflow
+export const secondContent = ManageAttributes("div", container.el, "", {
+  display: "block",
+  backgroundColor: "#ab3434",
+  width: "40%",
+  height: "85vh",
+  overflowY: "hidden",
+  marginLeft: "10px",
+  marginRight: "0px",
+  borderTop: "1px solid black",
+  borderBottom: "1px solid black",
+  borderRadius: "1px",
+});
+
+// contents positioning
+export const secondContentContainer = ManageAttributes(
+  "div",
+  secondContent.el,
+  "",
+  {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+  }
+);
+
+scrollState(content, secondContent);
+
+export const footer = ManageAttributes("footer", document.body, "Robin Ryan", {
   display: "flex",
   justifyContent: "center",
-  height: "53px",
+  alignItems: "center",
+  height: "7.5vh",
   backgroundColor: "#ffffff",
 });
 
@@ -36,12 +88,15 @@ export const logo = ManageAttributes("div", header.el, "Logo", {
   justifyContent: "center",
   position: "absolute",
   left: "50%",
-  marginTop: "-34px",
+  marginTop: "-39px",
   transform: "translateX(-50%)",
+  fontFamily: "'Georgia', serif",
+  fontSize: "20px",
+  fontStyle: "italic",
+  textDecoration: "underline",
 });
 
 export const homeBtn = designBtn("Home");
-export const menuBtn = designBtn("Menu");
 export const infoBtn = designBtn("Info");
 
 const body = document.querySelector("body");
@@ -49,7 +104,6 @@ const body = document.querySelector("body");
 // body.style.backgroundSize = "cover";
 // body.style.backgroundPosition = "center";
 // body.style.backgroundRepeat = "no-repeat";
-body.style.backgroundColor = "#ab3434";
 body.style.margin = "0px";
 
 // add footer

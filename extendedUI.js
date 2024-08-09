@@ -1,5 +1,5 @@
 import { ManageAttributes, values } from "./scripts.js";
-import { navBar, content } from "./ui.js";
+import { navBar, contentContainer, secondContentContainer } from "./ui.js";
 
 // Extends ManageAttributes() & specifies buttons
 export const designBtn = (text) => {
@@ -16,7 +16,17 @@ export const designBtn = (text) => {
 export const createMenuItem = (text) => {
   const item = ManageAttributes(
     "div",
-    content.el,
+    contentContainer.el,
+    text,
+    values().menuItemValues
+  );
+  return item;
+};
+
+export const createFoodItem = (text) => {
+  const item = ManageAttributes(
+    "div",
+    secondContentContainer.el,
     text,
     values().menuItemValues
   );

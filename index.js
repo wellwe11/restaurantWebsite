@@ -1,7 +1,9 @@
 import { hoverState, toggleElement } from "./scripts.js";
-import { homeBtn, menuBtn, infoBtn } from "./ui.js";
+import { homeBtn, infoBtn } from "./ui.js";
 
-hoverState(homeBtn, menuBtn, infoBtn);
+import("./homeTab.js");
+
+hoverState(homeBtn, infoBtn);
 
 const fetch = (...modules) => {
   modules.forEach((thisModule) => fetchModule(thisModule));
@@ -10,14 +12,13 @@ const fetch = (...modules) => {
 const whichTab = () => {
   const booleanValues = {
     homeOn: true,
-    menuOn: false,
     infoOn: false,
   };
 
   return booleanValues;
 };
 
-const allModules = ["homeTab", "menuTab", "infoTab"];
+const allModules = ["homeTab", "infoTab"];
 
 async function fetchModule(moduleName) {
   let module;
@@ -34,19 +35,6 @@ async function fetchModule(moduleName) {
             module.homeItemOne,
             module.homeItemTwo,
             module.homeItemThree
-          );
-    } else if (moduleName === "menuTab") {
-      module = await import("./menuTab.js");
-      whichTab.menuOn
-        ? toggleElement().displayElement(
-            module.menuItemOne,
-            module.menuItemTwo,
-            module.menuItemThree
-          )
-        : toggleElement().hideElement(
-            module.menuItemOne,
-            module.menuItemTwo,
-            module.menuItemThree
           );
     } else if (moduleName === "infoTab") {
       module = await import("./infoTab.js");
@@ -69,21 +57,12 @@ async function fetchModule(moduleName) {
 
 homeBtn.el.addEventListener("click", () => {
   whichTab.homeOn = true;
-  whichTab.menuOn = false;
-  whichTab.infoOn = false;
-  fetch(...allModules);
-});
-
-menuBtn.el.addEventListener("click", () => {
-  whichTab.homeOn = false;
-  whichTab.menuOn = true;
   whichTab.infoOn = false;
   fetch(...allModules);
 });
 
 infoBtn.el.addEventListener("click", () => {
   whichTab.homeOn = false;
-  whichTab.menuOn = false;
   whichTab.infoOn = true;
   fetch(...allModules);
 });

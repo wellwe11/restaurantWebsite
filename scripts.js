@@ -42,6 +42,19 @@ export const hoverState = (...buttons) => {
   });
 };
 
+// overflow on elements
+export const scrollState = (...elements) => {
+  elements.forEach((element) => {
+    element.el.addEventListener("mouseenter", () => {
+      element.el.style.overflowY = "scroll";
+    });
+
+    element.el.addEventListener("mouseleave", () => {
+      element.el.style.overflowY = "hidden";
+    });
+  });
+};
+
 // Pre-defined values for generic elements
 export const values = () => {
   const buttonValues = {
@@ -67,7 +80,7 @@ export const values = () => {
   };
 
   const menuItemValues = {
-    display: "none",
+    display: "block",
     width: "600px",
     height: "300px",
     color: "rgba(220, 220, 220, 0.9)",
