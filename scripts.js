@@ -33,11 +33,11 @@ export const toggleElement = () => {
 export const hoverState = (colorOne, colorTwo, ...buttons) => {
   buttons.forEach((button) => {
     button.el.addEventListener("mouseover", () => {
-      button.el.style.backgroundColor = colorOne;
+      button.el.style.backgroundSize = "0 0.15em, 100% 0.15em";
     });
 
     button.el.addEventListener("mouseout", () => {
-      button.el.style.backgroundColor = colorTwo;
+      button.el.style.backgroundSize = "0 0.15em, 0% 0.15em";
     });
   });
 };
@@ -50,14 +50,25 @@ export const values = () => {
   };
 
   const buttonValues = {
-    width: "150px",
-    height: "55px",
+    width: "49px",
+    height: "27px",
     color: "black",
-    backgroundColor: "#88C5E9",
-    border: "1px solid rgba(0, 0, 0, 0.4)",
-    borderRadius: "3px",
-    margin: "37px",
+    fontSize: "15px",
+    backgroundColor: "#ffffff",
+    margin: "20px",
     cursor: "pointer",
+    border: "none",
+
+    background: `linear-gradient(
+      to right,
+      rgba(158, 157, 193, 0),
+      rgba(158, 157, 193, 0)
+    ),
+    linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))`,
+    backgroundSize: "100% 0.15em, 0 0.15em",
+    backgroundPosition: "100% 100%, 0% 100%",
+    backgroundRepeat: "no-repeat",
+    transition: "background-size 400ms",
   };
 
   const menuItemValues = {
@@ -73,7 +84,7 @@ export const values = () => {
 
   const uiItems = {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "end",
     alignItems: "center",
     height: "70px",
   };

@@ -7,7 +7,7 @@ export const header = ManageAttributes(
   "header",
   document.body,
   "",
-  values().uiItems && { backgroundColor: "rgba(0, 0, 0, 0.7)" }
+  values().uiItems && { backgroundColor: "#ffffff" }
 );
 
 export const navBar = ManageAttributes("nav", header.el, "", values().uiItems);
@@ -17,6 +17,13 @@ export const content = ManageAttributes("div", document.body, "", {
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
+});
+
+export const footer = ManageAttributes("footer", document.body, "", {
+  display: "flex",
+  justifyContent: "center",
+  height: "60px",
+  backgroundColor: "rgba(0, 0, 0, 0.86)",
 });
 
 export const homeBtn = designBtn("Home");

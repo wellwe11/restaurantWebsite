@@ -1,7 +1,7 @@
 import { hoverState, toggleElement } from "./scripts.js";
 import { homeBtn, menuBtn, infoBtn } from "./ui.js";
 
-hoverState("#6B9CC4", "#88C5E9", homeBtn, menuBtn, infoBtn);
+hoverState("rgba(240, 240, 240, 0.8)", "#ffffff", homeBtn, menuBtn, infoBtn);
 
 const fetch = (...modules) => {
   modules.forEach((thisModule) => fetchModule(thisModule));
@@ -92,17 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
   homeBtn.el.click();
 });
 
-// create 3 different boiler plates for each tab:
-// all using the same html build
-// link them & import/export
-
-// index.js still need more elements. Add them later:
-// -Each individual button needs to have eventListener.
-// -Each button needs to lead to whatever tab it's directed.
-// -needs to be active on all 3 tabs
-
-//add effects => hover, click, whileActive(on current tab), mouseOver,
-
 // ------ v Menu Tab v --------------------------------------
 // --item dish 1
 // --item dish 2
@@ -112,16 +101,3 @@ document.addEventListener("DOMContentLoaded", () => {
 // ---name & title
 // ---phone number
 // ---email
-
-// // CSS attribute creator. Defined in element with createElementFunction.
-// function dynamicFunction(...dynamicName) {
-//   const methods = {};
-
-//   // same as element.style.attribute = value;
-//   dynamicName.forEach((name) => {
-//     methods[name] = function (value) {
-//       this.style[name] = value;
-//     };
-//   });
-// return methods;
-// }
