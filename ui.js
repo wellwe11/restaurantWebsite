@@ -1,17 +1,18 @@
 import { designBtn } from "./extendedUI";
-import { ManageAttributes, scrollState, values } from "./scripts";
+import { ManageAttributes, scrollState } from "./scripts";
 import("./menuTab");
 // import Wallpaper from "./wallpaper.jpeg";
 
 // In another module or file
-export const header = ManageAttributes(
-  "header",
-  document.body,
-  "",
-  values().uiItems && {
-    backgroundColor: "#ffffff",
-  }
-);
+export const header = ManageAttributes("header", document.body, "", {
+  display: "flex",
+  justifyContent: "flexend",
+  alignItems: "center",
+  height: "70px",
+  backgroundColor: "#ffffff",
+  textAlign: "center",
+  height: "7.5vh",
+});
 
 export const container = ManageAttributes("div", document.body, "", {
   display: "flex",
@@ -19,9 +20,17 @@ export const container = ManageAttributes("div", document.body, "", {
 
 export const navBar = ManageAttributes("nav", header.el, "", {
   display: "flex",
-  justifyContent: "start",
   alignItems: "center",
-  height: "7.5vh",
+  width: "100px",
+});
+
+export const logo = ManageAttributes("p", header.el, "Logo", {
+  fontFamily: "'Georgia', serif",
+  alignSelf: "center",
+  fontSize: "20px",
+  fontStyle: "italic",
+  textDecoration: "underline",
+  marginLeft: "41%",
 });
 
 // contents size & overflow
@@ -30,12 +39,10 @@ export const content = ManageAttributes("div", container.el, "", {
   backgroundColor: "#ab3434",
   width: "60%",
   height: "85vh",
-  overflowY: "hidden",
+  overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
-  borderTop: "1px solid black",
-  borderBottom: "1px solid black",
-  borderRadius: "1px",
+  borderRadius: "3px",
 });
 
 // contents positioning
@@ -49,15 +56,16 @@ export const contentContainer = ManageAttributes("div", content.el, "", {
 // contents size & overflow
 export const secondContent = ManageAttributes("div", container.el, "", {
   display: "block",
-  backgroundColor: "#ab3434",
+  backgroundColor: "#ffffff",
   width: "40%",
   height: "85vh",
-  overflowY: "hidden",
+  overflow: "hidden",
+  msOverflowStyle: "none",
+  scrollbarWidth: "none",
   marginLeft: "10px",
   marginRight: "0px",
-  borderTop: "1px solid black",
-  borderBottom: "1px solid black",
   borderRadius: "1px",
+  borderRadius: "3px",
 });
 
 // contents positioning
@@ -81,19 +89,6 @@ export const footer = ManageAttributes("footer", document.body, "Robin Ryan", {
   alignItems: "center",
   height: "7.5vh",
   backgroundColor: "#ffffff",
-});
-
-export const logo = ManageAttributes("div", header.el, "Logo", {
-  display: "flex",
-  justifyContent: "center",
-  position: "absolute",
-  left: "50%",
-  marginTop: "-39px",
-  transform: "translateX(-50%)",
-  fontFamily: "'Georgia', serif",
-  fontSize: "20px",
-  fontStyle: "italic",
-  textDecoration: "underline",
 });
 
 export const homeBtn = designBtn("Home");

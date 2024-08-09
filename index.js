@@ -1,8 +1,6 @@
 import { hoverState, toggleElement } from "./scripts.js";
 import { homeBtn, infoBtn } from "./ui.js";
 
-import("./homeTab.js");
-
 hoverState(homeBtn, infoBtn);
 
 const fetch = (...modules) => {

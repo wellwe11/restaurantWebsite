@@ -1,11 +1,9 @@
-// Factory function for elements
+// Factory function for elements (code starts here)
 export const CreateElementFunction = (type, elementToAppend, options = {}) => {
   const el = document.createElement(type);
   elementToAppend.appendChild(el);
+  Object.assign(el.style, options.styles);
 
-  if (options.styles) {
-    Object.assign(el.style, options.styles);
-  }
   return { el };
 };
 
@@ -53,49 +51,4 @@ export const scrollState = (...elements) => {
       element.el.style.overflowY = "hidden";
     });
   });
-};
-
-// Pre-defined values for generic elements
-export const values = () => {
-  const buttonValues = {
-    width: "49px",
-    height: "22px",
-    color: "black",
-    fontSize: "15px",
-    backgroundColor: "#ffffff",
-    margin: "25px",
-    cursor: "pointer",
-    border: "none",
-
-    background: `linear-gradient(
-      to right,
-      rgba(158, 157, 193, 0),
-      rgba(158, 157, 193, 0)
-    ),
-    linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0))`,
-    backgroundSize: "100% 0.15em, 0 0.15em",
-    backgroundPosition: "100% 100%, 0% 100%",
-    backgroundRepeat: "no-repeat",
-    transition: "background-size 400ms",
-  };
-
-  const menuItemValues = {
-    display: "block",
-    width: "600px",
-    height: "300px",
-    color: "rgba(220, 220, 220, 0.9)",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    textAlign: "center",
-    borderRadius: "3px",
-    margin: "3px",
-  };
-
-  const uiItems = {
-    display: "flex",
-    justifyContent: "end",
-    alignItems: "center",
-    height: "70px",
-  };
-
-  return { buttonValues, menuItemValues, uiItems };
 };
