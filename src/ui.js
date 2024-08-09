@@ -24,14 +24,19 @@ export const navBar = ManageAttributes("nav", header.el, "", {
   width: "100px",
 });
 
-export const logo = ManageAttributes("p", header.el, "Logo", {
-  fontFamily: "'Georgia', serif",
-  alignSelf: "center",
-  fontSize: "20px",
-  fontStyle: "italic",
-  textDecoration: "underline",
-  marginLeft: "41%",
-});
+export const logo = ManageAttributes(
+  "p",
+  header.el,
+  "Peter & Jonnies Pizzeria",
+  {
+    fontFamily: "'Georgia', serif",
+    alignSelf: "center",
+    fontSize: "20px",
+    fontStyle: "italic",
+    textDecoration: "underline",
+    marginLeft: "37%",
+  }
+);
 
 // contents size & overflow
 export const content = ManageAttributes("div", container.el, "", {

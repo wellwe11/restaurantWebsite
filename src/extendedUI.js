@@ -40,18 +40,23 @@ export const createMenuItem = (text) => {
   return item;
 };
 
-export const createFoodItem = (text, picture, margin) => {
+export const createFoodItem = (text, picture, margin, picturePosition) => {
   const item = ManageAttributes("div", secondContentContainer.el, text, {
     display: "block",
-    width: "600px",
+    color: "white",
+    width: "550px",
     height: "300px",
     marginTop: margin,
     textAlign: "center",
+    fontSize: "34px",
+    lineHeight: "1.5",
+    fontFamily: "'Georgia', serif",
+    fontStyle: "italic",
 
-    backgroundImage: `linear-gradient(to bottom, rgb(171, 52, 52, 0.3) 10%, rgb(171, 52, 52, 1) 28%),
+    backgroundImage: `linear-gradient(to top, rgb(171, 52, 52, 0.3) 10%, rgb(171, 52, 52, 1) 28%),
     url(${picture})`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: picturePosition,
   });
   return item;
 };
