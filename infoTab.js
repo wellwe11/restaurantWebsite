@@ -1,7 +1,5 @@
-//infoTabJs
-import * as index from "./index.js";
-export * from "./infoTab.js";
+import { createMenuItem } from "./extendedUI";
 
-export const infoItemOne = index.createMenuItem("infTab");
-export const infoItemTwo = index.createMenuItem("");
-export const infoItemThree = index.createMenuItem("");
+export const infoItemOne = createMenuItem("InfoTab");
+export const infoItemTwo = createMenuItem("");
+export const infoItemThree = createMenuItem("");

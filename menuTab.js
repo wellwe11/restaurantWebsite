@@ -1,6 +1,5 @@
-import * as index from "./index.js";
-export * from "./menuTab.js";
+import { createMenuItem } from "./extendedUI";
 
-export const menuItemOne = index.createMenuItem("menuOne");
-export const menuItemTwo = index.createMenuItem("");
-export const menuItemThree = index.createMenuItem(""); //menuTabJS
+export const menuItemOne = createMenuItem("MenuOne");
+export const menuItemTwo = createMenuItem("");
+export const menuItemThree = createMenuItem("");

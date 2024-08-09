@@ -1,139 +1,5 @@
-// need to move code into another folder.
-// index.js should only load all codes
-
-export * from "./index.js";
-
-// factory function for elements
-const CreateElementFunction = (type, elementToAppend, options = {}) => {
-  const el = document.createElement(type);
-  elementToAppend.appendChild(el);
-
-  if (options.styles) {
-    Object.assign(el.style, options.styles);
-  }
-  return {
-    el,
-  };
-};
-
-// define values for element
-const ManageAttributes = (type, elementToAppend, name, styles) => {
-  const newEl = CreateElementFunction(type, elementToAppend, {
-    styles,
-  });
-  newEl.el.textContent = name;
-  return newEl;
-};
-
-// extends ManageAttributes() & specifies buttons
-const designBtn = (text) => {
-  const button = ManageAttributes(
-    "button",
-    navBar.el,
-    text,
-    values().buttonValues
-  );
-
-  return button;
-};
-
-// extends ManageAttributes() & specifies menuItems
-export const createMenuItem = (text) => {
-  const item = ManageAttributes(
-    "div",
-    content.el,
-    text,
-    values().menuItemValues
-  );
-
-  return item;
-};
-
-export const toggleElement = () => {
-  const displayElement = (...elements) => {
-    elements.forEach((element) => (element.el.style.display = "block"));
-  };
-
-  const hideElement = (...elements) => {
-    elements.forEach((element) => (element.el.style.display = "none"));
-  };
-
-  return {
-    displayElement,
-    hideElement,
-  };
-};
-
-// :hover for buttons
-const hoverState = (colorOne, colorTwo, ...buttons) => {
-  buttons.forEach((button) =>
-    button.el.addEventListener("mouseover", () => {
-      button.el.style.backgroundColor = colorOne;
-    })
-  );
-
-  buttons.forEach((button) =>
-    button.el.addEventListener("mouseout", () => {
-      button.el.style.backgroundColor = colorTwo;
-    })
-  );
-};
-
-// pre-defined values for generic elements
-const values = () => {
-  const flexValues = {
-    display: "flex",
-    justifyContent: "center",
-  };
-
-  const buttonValues = {
-    width: "150px",
-    height: "55px",
-    color: "black",
-    backgroundColor: "#88C5E9",
-    border: "1px solid white",
-    borderRadius: "3px",
-    margin: "3px",
-    marginTop: "-3px",
-    cursor: "pointer",
-  };
-
-  const menuItemValues = {
-    display: "none",
-    width: "600px",
-    height: "300px",
-    color: "black",
-    backgroundColor: "#88C5E9",
-    textAlign: "center",
-    border: "1px solid white",
-    borderRadius: "3px",
-    margin: "3px",
-  };
-
-  return {
-    flexValues,
-    buttonValues,
-    menuItemValues,
-  };
-};
-
-const header = ManageAttributes(
-  "header",
-  document.body,
-  "",
-  values().flexValues
-);
-const navBar = ManageAttributes("nav", header.el, "", values().flexValues);
-const content = ManageAttributes("div", document.body, "", {
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  alignItems: "center",
-});
-
-const homeBtn = designBtn("home");
-const menuBtn = designBtn("Menu");
-const infoBtn = designBtn("Info");
+import { hoverState, toggleElement } from "./scripts.js";
+import { homeBtn, menuBtn, infoBtn } from "./ui.js";
 
 hoverState("#6B9CC4", "#88C5E9", homeBtn, menuBtn, infoBtn);
 
@@ -141,20 +7,24 @@ const fetch = (...modules) => {
   modules.forEach((thisModule) => fetchModule(thisModule));
 };
 
-const allModules = ["homeTab", "menuTab", "infoTab"];
+const whichTab = () => {
+  const booleanValues = {
+    homeOn: true,
+    menuOn: false,
+    infoOn: false,
+  };
 
-const booleanValues = {
-  homeOn: false,
-  menuOn: false,
-  infoOn: false,
+  return booleanValues;
 };
 
-export async function fetchModule(moduleName) {
+const allModules = ["homeTab", "menuTab", "infoTab"];
+
+async function fetchModule(moduleName) {
   let module;
   try {
     if (moduleName === "homeTab") {
       module = await import("./homeTab.js");
-      booleanValues.homeOn
+      whichTab.homeOn
         ? toggleElement().displayElement(
             module.homeItemOne,
             module.homeItemTwo,
@@ -167,7 +37,7 @@ export async function fetchModule(moduleName) {
           );
     } else if (moduleName === "menuTab") {
       module = await import("./menuTab.js");
-      booleanValues.menuOn
+      whichTab.menuOn
         ? toggleElement().displayElement(
             module.menuItemOne,
             module.menuItemTwo,
@@ -180,7 +50,7 @@ export async function fetchModule(moduleName) {
           );
     } else if (moduleName === "infoTab") {
       module = await import("./infoTab.js");
-      booleanValues.infoOn
+      whichTab.infoOn
         ? toggleElement().displayElement(
             module.infoItemOne,
             module.infoItemTwo,
@@ -198,24 +68,28 @@ export async function fetchModule(moduleName) {
 }
 
 homeBtn.el.addEventListener("click", () => {
-  booleanValues.homeOn = true;
-  booleanValues.menuOn = false;
-  booleanValues.infoOn = false;
+  whichTab.homeOn = true;
+  whichTab.menuOn = false;
+  whichTab.infoOn = false;
   fetch(...allModules);
 });
 
 menuBtn.el.addEventListener("click", () => {
-  booleanValues.homeOn = false;
-  booleanValues.menuOn = true;
-  booleanValues.infoOn = false;
+  whichTab.homeOn = false;
+  whichTab.menuOn = true;
+  whichTab.infoOn = false;
   fetch(...allModules);
 });
 
 infoBtn.el.addEventListener("click", () => {
-  booleanValues.homeOn = false;
-  booleanValues.menuOn = false;
-  booleanValues.infoOn = true;
+  whichTab.homeOn = false;
+  whichTab.menuOn = false;
+  whichTab.infoOn = true;
   fetch(...allModules);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  homeBtn.el.click();
 });
 
 // create 3 different boiler plates for each tab:
