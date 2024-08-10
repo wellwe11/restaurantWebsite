@@ -1,11 +1,67 @@
 import { createMenuItem } from "./extendedUI";
+import { ManageAttributes } from "./scripts";
 
-export const homeItemOne = createMenuItem(
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac diam libero. Aliquam erat volutpat. Vivamus pretium urna nec massa luctus, id pretium mi varius. Sed eget ligula at ligula cursus aliquet. Morbi nec gravida est, vel tincidunt eros. Donec eget turpis at eros sodales fringilla sed non tortor. Suspendisse non purus eu elit ultricies volutpat sit amet id erat. In hac habitasse platea dictumst. Nulla facilisi. Quisque at orci ut lorem euismod gravida. Integer vestibulum urna vitae sem feugiat, vel facilisis risus varius. Curabitur fringilla nisi quis nisi sagittis, eu maximus mauris facilisis. Duis a nulla id orci interdum tincidunt ut eget risus. Nam at lectus nec dolor dapibus elementum. Ut at velit felis. Praesent volutpat dolor at sem tristique feugiat. Aliquam erat volutpat. Fusce vitae viverra odio. Sed malesuada purus et libero volutpat, in ullamcorper velit sagittis. Aenean nec pharetra lorem. Vivamus et malesuada odio. Nam fermentum elit ut lectus tincidunt, eget convallis mi convallis. Suspendisse potenti. Nulla facilisi. Integer et laoreet nisl. Donec gravida libero vel erat bibendum, id lacinia libero placerat. Nunc dictum ipsum nec pharetra ullamcorper. Maecenas auctor lorem a dui interdum scelerisque. Cras viverra dolor in massa dapibus tempor. Nullam sit amet diam nec nunc elementum feugiat."
+export const homeItemOne = createMenuItem("", "#ab3434", "100%", "", "5px");
+export const homeItemTwo = createMenuItem("", "white", "100%", "5px", "5px");
+export const homeItemThree = createMenuItem("", "#ab3434", "100%", "5px", "");
+
+export const itemOneLeftBar = ManageAttributes("div", homeItemOne.el, "", {
+  width: "23%",
+  height: "100%",
+  backgroundColor: "black",
+  marginRight: "1px",
+});
+export const itemOneCenterBar = ManageAttributes("div", homeItemOne.el, "", {
+  width: "48%",
+  height: "100%",
+  backgroundColor: "black",
+  marginRight: "1px",
+  justifyContent: "center",
+});
+
+export const itemOneRightBar = ManageAttributes("div", homeItemOne.el, "", {
+  width: "23%",
+  height: "100%",
+  backgroundColor: "black",
+});
+
+export const itemTwoLeftBar = ManageAttributes("div", homeItemTwo.el, "", {
+  width: "23%",
+  height: "100%",
+  backgroundColor: "black",
+});
+
+export const itemTwoCentertBar = ManageAttributes("div", homeItemTwo.el, "", {
+  width: "48%",
+  height: "100%",
+  backgroundColor: "black",
+});
+
+export const itemTwoRightBar = ManageAttributes("div", homeItemTwo.el, "", {
+  width: "23%",
+  height: "100%",
+  backgroundColor: "black",
+});
+
+export const itemThreeLeftBar = ManageAttributes("div", homeItemThree.el, "", {
+  width: "23%",
+  height: "100%",
+  backgroundColor: "black",
+});
+
+export const itemThreeCentertBar = ManageAttributes(
+  "div",
+  homeItemThree.el,
+  "",
+  {
+    width: "48%",
+    height: "100%",
+    backgroundColor: "black",
+  }
 );
-export const homeItemTwo = createMenuItem(
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac diam libero. Aliquam erat volutpat. Vivamus pretium urna nec massa luctus, id pretium mi varius. Sed eget ligula at ligula cursus aliquet. Morbi nec gravida est, vel tincidunt eros. Donec eget turpis at eros sodales fringilla sed non tortor. Suspendisse non purus eu elit ultricies volutpat sit amet id erat. In hac habitasse platea dictumst. Nulla facilisi. Quisque at orci ut lorem euismod gravida. Integer vestibulum urna vitae sem feugiat, vel facilisis risus varius. Curabitur fringilla nisi quis nisi sagittis, eu maximus mauris facilisis. Duis a nulla id orci interdum tincidunt ut eget risus. Nam at lectus nec dolor dapibus elementum. Ut at velit felis. Praesent volutpat dolor at sem tristique feugiat. Aliquam erat volutpat. Fusce vitae viverra odio. Sed malesuada purus et libero volutpat, in ullamcorper velit sagittis. Aenean nec pharetra lorem. Vivamus et malesuada odio. Nam fermentum elit ut lectus tincidunt, eget convallis mi convallis. Suspendisse potenti. Nulla facilisi. Integer et laoreet nisl. Donec gravida libero vel erat bibendum, id lacinia libero placerat. Nunc dictum ipsum nec pharetra ullamcorper. Maecenas auctor lorem a dui interdum scelerisque. Cras viverra dolor in massa dapibus tempor. Nullam sit amet diam nec nunc elementum feugiat."
-);
-export const homeItemThree = createMenuItem(
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac diam libero. Aliquam erat volutpat. Vivamus pretium urna nec massa luctus, id pretium mi varius. Sed eget ligula at ligula cursus aliquet. Morbi nec gravida est, vel tincidunt eros. Donec eget turpis at eros sodales fringilla sed non tortor. Suspendisse non purus eu elit ultricies volutpat sit amet id erat. In hac habitasse platea dictumst. Nulla facilisi. Quisque at orci ut lorem euismod gravida. Integer vestibulum urna vitae sem feugiat, vel facilisis risus varius. Curabitur fringilla nisi quis nisi sagittis, eu maximus mauris facilisis. Duis a nulla id orci interdum tincidunt ut eget risus. Nam at lectus nec dolor dapibus elementum. Ut at velit felis. Praesent volutpat dolor at sem tristique feugiat. Aliquam erat volutpat. Fusce vitae viverra odio. Sed malesuada purus et libero volutpat, in ullamcorper velit sagittis. Aenean nec pharetra lorem. Vivamus et malesuada odio. Nam fermentum elit ut lectus tincidunt, eget convallis mi convallis. Suspendisse potenti. Nulla facilisi. Integer et laoreet nisl. Donec gravida libero vel erat bibendum, id lacinia libero placerat. Nunc dictum ipsum nec pharetra ullamcorper. Maecenas auctor lorem a dui interdum scelerisque. Cras viverra dolor in massa dapibus tempor. Nullam sit amet diam nec nunc elementum feugiat."
-);
+
+export const itemThreeRightBar = ManageAttributes("div", homeItemThree.el, "", {
+  width: "23%",
+  height: "100%",
+  backgroundColor: "black",
+});

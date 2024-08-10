@@ -41,13 +41,13 @@ export const logo = ManageAttributes(
 // contents size & overflow
 export const content = ManageAttributes("div", container.el, "", {
   display: "block",
-  backgroundColor: "#ab3434",
   width: "60%",
-  height: "85vh",
+  height: "92vh",
   overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
-  borderRadius: "3px",
+  borderTopRightRadius: "3px",
+  borderBottomRightRadius: "3px",
 });
 
 // contents positioning
@@ -63,14 +63,14 @@ export const secondContent = ManageAttributes("div", container.el, "", {
   display: "block",
   backgroundColor: "#ffffff",
   width: "40%",
-  height: "85vh",
+  height: "92vh",
   overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
   marginLeft: "10px",
   marginRight: "0px",
-  borderRadius: "1px",
-  borderRadius: "3px",
+  borderTopLeftRadius: "3px",
+  borderBottomLeftRadius: "3px",
 });
 
 // contents positioning
@@ -88,7 +88,7 @@ export const secondContentContainer = ManageAttributes(
 
 scrollState(content, secondContent);
 
-export const footer = ManageAttributes("footer", document.body, "Robin Ryan", {
+export const footer = ManageAttributes("footer", content.el, "Robin Ryan", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

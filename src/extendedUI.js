@@ -27,15 +27,21 @@ export const designBtn = (text) => {
 };
 
 // Extends ManageAttributes() & specifies menu items
-export const createMenuItem = (text) => {
+export const createMenuItem = (text, color, width, marginTop, marginBottom) => {
   const item = ManageAttributes("div", contentContainer.el, text, {
-    display: "block",
-    width: "600px",
-    height: "300px",
-    color: "rgba(220, 220, 220, 0.9)",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    display: "flex",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+
+    width: width,
+    height: "400px",
+
+    color: "black",
     textAlign: "center",
-    margin: "10px",
+
+    marginTop: marginTop,
+    marginBottom: marginBottom,
+    backgroundColor: color,
   });
   return item;
 };
@@ -43,20 +49,29 @@ export const createMenuItem = (text) => {
 export const createFoodItem = (text, picture, margin, picturePosition) => {
   const item = ManageAttributes("div", secondContentContainer.el, text, {
     display: "block",
-    color: "white",
-    width: "550px",
+    color: "black",
+    width: "100%",
     height: "300px",
     marginTop: margin,
-    textAlign: "center",
-    fontSize: "34px",
-    lineHeight: "1.5",
-    fontFamily: "'Georgia', serif",
-    fontStyle: "italic",
 
-    backgroundImage: `linear-gradient(to top, rgb(171, 52, 52, 0.3) 10%, rgb(171, 52, 52, 1) 28%),
+    backgroundImage: `linear-gradient(to bottom, rgb(171, 52, 52, 0.3) 15%, rgb(171, 52, 52, 1) 0%),
     url(${picture})`,
     backgroundSize: "cover",
     backgroundPosition: picturePosition,
   });
+  return item;
+};
+
+export const foodItemText = (text, toAppend, margin) => {
+  const item = ManageAttributes("div", toAppend, text, {
+    height: "85%",
+    width: "100%",
+    backgroundColor: "#ab3434",
+    textAlign: "start",
+    fontFamily: "'Georgia', serif",
+    fontStyle: "italic",
+    marginTop: margin,
+  });
+
   return item;
 };

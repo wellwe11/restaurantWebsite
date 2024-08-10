@@ -17,7 +17,7 @@ export const ManageAttributes = (type, elementToAppend, name, styles) => {
 // Toggle element visibility
 export const toggleElement = () => {
   const displayElement = (...elements) => {
-    elements.forEach((element) => (element.el.style.display = "block"));
+    elements.forEach((element) => (element.el.style.display = "flex"));
   };
 
   const hideElement = (...elements) => {
