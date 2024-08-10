@@ -9,17 +9,24 @@ export const header = ManageAttributes("header", document.body, "", {
   justifyContent: "flexend",
   alignItems: "center",
   height: "70px",
-  backgroundColor: "#ffffff",
+  backgroundColor: "#fffff1",
   textAlign: "center",
   height: "7.5vh",
+  marginBottom: "1vh",
 });
 
 export const container = ManageAttributes("div", document.body, "", {
   display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  margin: "0 auto 2% auto",
+  backgroundColor: "#f7e8d3",
+  width: "95%",
 });
 
 export const navBar = ManageAttributes("nav", header.el, "", {
   display: "flex",
+  marginLeft: "1.9vh",
   alignItems: "center",
   width: "100px",
 });
@@ -29,24 +36,23 @@ export const logo = ManageAttributes(
   header.el,
   "Peter & Jonnies Pizzeria",
   {
-    fontFamily: "'Georgia', serif",
+    fontFamily: "'libre baskerville', serif",
     alignSelf: "center",
     fontSize: "20px",
     fontStyle: "italic",
-    textDecoration: "underline",
     marginLeft: "37%",
   }
 );
 
 // contents size & overflow
 export const content = ManageAttributes("div", container.el, "", {
-  display: "block",
   width: "60%",
-  height: "92vh",
+  height: "90vh",
   overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
   borderTopRightRadius: "3px",
+  borderTopLeftRadius: "3px",
   borderBottomRightRadius: "3px",
 });
 
@@ -60,10 +66,8 @@ export const contentContainer = ManageAttributes("div", content.el, "", {
 
 // contents size & overflow
 export const secondContent = ManageAttributes("div", container.el, "", {
-  display: "block",
-  backgroundColor: "#ffffff",
   width: "40%",
-  height: "92vh",
+  height: "90vh",
   overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
@@ -71,6 +75,10 @@ export const secondContent = ManageAttributes("div", container.el, "", {
   marginRight: "0px",
   borderTopLeftRadius: "3px",
   borderBottomLeftRadius: "3px",
+  borderBottomRightRadius: "3px",
+  backgroundColor: "#f7e8d3",
+  display: "flex",
+  flexDirection: "column",
 });
 
 // contents positioning
@@ -93,17 +101,33 @@ export const footer = ManageAttributes("footer", content.el, "Robin Ryan", {
   justifyContent: "center",
   alignItems: "center",
   height: "7.5vh",
-  backgroundColor: "#ffffff",
+  backgroundColor: "#fffff1",
 });
 
 export const homeBtn = designBtn("Home");
 export const infoBtn = designBtn("Info");
 
 const body = document.querySelector("body");
-// body.style.backgroundImage = `url(${Wallpaper})`;
-// body.style.backgroundSize = "cover";
-// body.style.backgroundPosition = "center";
-// body.style.backgroundRepeat = "no-repeat";
-body.style.margin = "0px";
 
-// add footer
+body.style.margin = "0px";
+body.style.backgroundColor = "#f7e8d3";
+
+export const smallerWindow = () => {
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 1000) {
+      content.el.style.width = "100%";
+      content.el.style.height = "90vh";
+      container.el.style.flexDirection = "column";
+      secondContent.el.style.width = "100%";
+      secondContent.el.style.height = "90vh";
+    } else {
+      container.el.style.flexDirection = "row";
+      content.el.style.width = "60%";
+      secondContent.el.style.width = "40%";
+      content.el.style.height = "90vh";
+      secondContent.el.style.height = "90vh";
+    }
+  });
+};
+
+smallerWindow();

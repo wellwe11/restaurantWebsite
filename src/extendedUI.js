@@ -1,4 +1,4 @@
-import { ManageAttributes, values } from "./scripts.js";
+import { ManageAttributes } from "./scripts.js";
 import { navBar, contentContainer, secondContentContainer } from "./ui.js";
 // Extends ManageAttributes() & specifies buttons
 export const designBtn = (text) => {
@@ -7,7 +7,7 @@ export const designBtn = (text) => {
     height: "22px",
     color: "black",
     fontSize: "15px",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#f7e8d3",
     margin: "25px",
     cursor: "pointer",
     border: "none",
@@ -30,7 +30,7 @@ export const designBtn = (text) => {
 export const createMenuItem = (text, color, width, marginTop, marginBottom) => {
   const item = ManageAttributes("div", contentContainer.el, text, {
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     flexDirection: "row",
 
     width: width,
@@ -46,31 +46,43 @@ export const createMenuItem = (text, color, width, marginTop, marginBottom) => {
   return item;
 };
 
-export const createFoodItem = (text, picture, margin, picturePosition) => {
+export const createFoodItem = (
+  text,
+  picture,
+  margin,
+  picturePosition,
+  size
+) => {
   const item = ManageAttributes("div", secondContentContainer.el, text, {
     display: "block",
     color: "black",
     width: "100%",
-    height: "300px",
+    height: "50vh",
+    maxHeight: "50vh",
     marginTop: margin,
 
-    backgroundImage: `linear-gradient(to bottom, rgb(171, 52, 52, 0.3) 15%, rgb(171, 52, 52, 1) 0%),
+    backgroundImage: `linear-gradient(to bottom, rgb(171, 52, 52, 0) 15%, rgb(171, 52, 52, 1) 0%),
     url(${picture})`,
-    backgroundSize: "cover",
+    backgroundSize: size,
     backgroundPosition: picturePosition,
   });
   return item;
 };
 
-export const foodItemText = (text, toAppend, margin) => {
+export const foodItemText = (text, toAppend) => {
   const item = ManageAttributes("div", toAppend, text, {
-    height: "85%",
-    width: "100%",
+    height: "72%",
+    marginLeft: "5%",
+    width: "90%",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#ab3434",
+    // backgroundColor: "green",
     textAlign: "start",
     fontFamily: "'Georgia', serif",
     fontStyle: "italic",
-    marginTop: margin,
+    marginTop: "15%",
+    lineHeight: "3",
   });
 
   return item;

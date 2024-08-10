@@ -42,13 +42,15 @@ export const hoverState = (...buttons) => {
 
 // overflow on elements
 export const scrollState = (...elements) => {
-  elements.forEach((element) => {
-    element.el.addEventListener("mouseenter", () => {
-      element.el.style.overflowY = "scroll";
-    });
+  if (window.innerWidth > 1000) {
+    elements.forEach((element) => {
+      element.el.addEventListener("mouseenter", () => {
+        element.el.style.overflowY = "scroll";
+      });
 
-    element.el.addEventListener("mouseleave", () => {
-      element.el.style.overflowY = "hidden";
+      element.el.addEventListener("mouseleave", () => {
+        element.el.style.overflowY = "hidden";
+      });
     });
-  });
+  }
 };
