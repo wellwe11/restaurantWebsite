@@ -1,11 +1,21 @@
 import { createMenuItem } from "./extendedUI";
 import { ManageAttributes } from "./scripts";
+import { scrollState } from "./scripts";
 import IconOne from "./icons/pizza-20.png";
 import DrinkOne from "./icons/drink.png";
 import Logo from "./icons/logo.jpg";
 import CompoPics from "./backgroundImages/compos.png";
+import IcreCream from "./icons/iceCream.png";
+import Sunglasses from "./icons/sunglasses.png";
 
-export const homeItemOne = createMenuItem("", "#ab3434", "100%", "", "5px");
+export const homeItemOne = createMenuItem(
+  "",
+  "#ab3434",
+  "100%",
+  "",
+  "5px",
+  "scroll"
+);
 export const homeItemTwo = createMenuItem("", "#f7e8d3", "100%", "5px", "5px");
 export const homeItemThree = createMenuItem("", "#ab3434", "100%", "5px", "");
 const randomText = `
@@ -57,7 +67,6 @@ export const iconOneCenter = ManageAttributes("div", itemOneCenterBar.el, "", {
   lineHeight: "1.5",
 });
 
-// items two
 export const iconTwoCenter = ManageAttributes(
   "div",
   itemOneCenterBar.el,
@@ -69,6 +78,8 @@ export const iconTwoCenter = ManageAttributes(
     marginRight: "2%",
     lineHeight: "1.5",
     marginBottom: "13%",
+    height: "350px",
+    overflow: "overlay",
   }
 );
 
@@ -87,11 +98,12 @@ export const iconOneRight = ManageAttributes("div", itemOneRightBar.el, "", {
   marginTop: "200px",
 });
 
+// items two
 export const itemTwoCentertBar = ManageAttributes("div", homeItemTwo.el, "", {
   width: "100%",
   height: "100%",
   backgroundImage: `url(${CompoPics})`,
-  backgroundSize: "cover",
+  backgroundSize: "120%",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
 });
@@ -101,6 +113,10 @@ export const itemThreeLeftBar = ManageAttributes("div", homeItemThree.el, "", {
   width: "23%",
   height: "100%",
   backgroundColor: "#ab3434",
+  backgroundImage: `url(${Sunglasses})`,
+  backgroundSize: "100px",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "90px",
 });
 
 export const itemThreeCentertBar = ManageAttributes(
@@ -114,8 +130,28 @@ export const itemThreeCentertBar = ManageAttributes(
   }
 );
 
+export const iconTwoCenterThree = ManageAttributes(
+  "div",
+  itemThreeCentertBar.el,
+  randomText,
+  {
+    width: "90%",
+    height: "300px",
+    overflow: "overlay",
+
+    marginLeft: "2%",
+    marginRight: "2%",
+    lineHeight: "1.5",
+    marginTop: "70px",
+  }
+);
+
 export const itemThreeRightBar = ManageAttributes("div", homeItemThree.el, "", {
   width: "23%",
   height: "100%",
   backgroundColor: "#ab3434",
+  backgroundImage: `url(${IcreCream})`,
+  backgroundSize: "100px",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "10px 109px",
 });

@@ -39,14 +39,9 @@ async function fetchModule(moduleName) {
       whichTab.infoOn
         ? toggleElement().displayElement(
             module.infoItemOne,
-            module.infoItemTwo,
             module.infoItemThree
           )
-        : toggleElement().hideElement(
-            module.infoItemOne,
-            module.infoItemTwo,
-            module.infoItemThree
-          );
+        : toggleElement().hideElement(module.infoItemOne, module.infoItemThree);
     }
   } catch (error) {
     console.error("Error:", error);

@@ -56,7 +56,7 @@ export const createFoodItem = (
   const item = ManageAttributes("div", secondContentContainer.el, text, {
     display: "block",
     color: "black",
-    width: "100%",
+    minWidth: "100%",
     height: "50vh",
     maxHeight: "50vh",
     marginTop: margin,

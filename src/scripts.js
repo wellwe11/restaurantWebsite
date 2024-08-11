@@ -45,11 +45,11 @@ export const scrollState = (...elements) => {
   if (window.innerWidth > 1000) {
     elements.forEach((element) => {
       element.el.addEventListener("mouseenter", () => {
-        element.el.style.overflowY = "scroll";
+        element.el.style.overflow = "scroll";
       });
 
       element.el.addEventListener("mouseleave", () => {
-        element.el.style.overflowY = "hidden";
+        element.el.style.overflow = "hidden";
       });
     });
   }

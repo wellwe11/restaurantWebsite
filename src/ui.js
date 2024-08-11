@@ -12,7 +12,7 @@ export const header = ManageAttributes("header", document.body, "", {
   backgroundColor: "#fffff1",
   textAlign: "center",
   height: "7.5vh",
-  marginBottom: "1vh",
+  marginBottom: "2vh",
 });
 
 export const container = ManageAttributes("div", document.body, "", {
@@ -40,7 +40,9 @@ export const logo = ManageAttributes(
     alignSelf: "center",
     fontSize: "20px",
     fontStyle: "italic",
-    marginLeft: "37%",
+    position: "absolute",
+    left: "50%",
+    transform: "translateX(-50%)",
   }
 );
 
@@ -51,9 +53,7 @@ export const content = ManageAttributes("div", container.el, "", {
   overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
-  borderTopRightRadius: "3px",
-  borderTopLeftRadius: "3px",
-  borderBottomRightRadius: "3px",
+  borderRadius: "3px",
 });
 
 // contents positioning
@@ -66,16 +66,15 @@ export const contentContainer = ManageAttributes("div", content.el, "", {
 
 // contents size & overflow
 export const secondContent = ManageAttributes("div", container.el, "", {
-  width: "40%",
+  minWidth: "72vh",
+  maxWidth: "72vh",
   height: "90vh",
   overflow: "hidden",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
   marginLeft: "10px",
   marginRight: "0px",
-  borderTopLeftRadius: "3px",
-  borderBottomLeftRadius: "3px",
-  borderBottomRightRadius: "3px",
+  borderRadius: "3px",
   backgroundColor: "#f7e8d3",
   display: "flex",
   flexDirection: "column",
@@ -120,12 +119,16 @@ export const smallerWindow = () => {
       container.el.style.flexDirection = "column";
       secondContent.el.style.width = "100%";
       secondContent.el.style.height = "90vh";
+      secondContent.el.style.alignSelf = "center";
+      logo.el.style.left = "70%";
     } else {
       container.el.style.flexDirection = "row";
       content.el.style.width = "60%";
       secondContent.el.style.width = "40%";
       content.el.style.height = "90vh";
       secondContent.el.style.height = "90vh";
+      secondContent.el.style.alignSelf = "";
+      logo.el.style.left = "50%";
     }
   });
 };
