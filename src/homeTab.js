@@ -1,6 +1,5 @@
 import { createMenuItem } from "./extendedUI";
 import { ManageAttributes } from "./scripts";
-import { scrollState } from "./scripts";
 import IconOne from "./icons/pizza-20.png";
 import DrinkOne from "./icons/drink.png";
 import Logo from "./icons/logo.jpg";

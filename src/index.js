@@ -63,13 +63,3 @@ infoBtn.el.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   homeBtn.el.click();
 });
-
-// ------ v Menu Tab v --------------------------------------
-// --item dish 1
-// --item dish 2
-// --item dish 3
-// ------ v Info Tab v --------------------------------------
-// --contact info
-// ---name & title
-// ---phone number
-// ---email
