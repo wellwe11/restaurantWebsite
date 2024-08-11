@@ -26,12 +26,48 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'App',
+      title: 'Index Page',
       template: './src/index.html',
       filename: 'index.html',
-      chunks: ['index', 'scripts', 'UI', 'extendedUI', 'home', 'info', 'menuTab'],
+      chunks: ['index'],
     }),
-],       
+    new HtmlWebpackPlugin({
+      title: 'Scripts Page',
+      template: './src/scripts.html',
+      filename: 'scripts.html',
+      chunks: ['scripts'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'UI Page',
+      template: './src/ui.html',
+      filename: 'ui.html',
+      chunks: ['UI'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Extended UI Page',
+      template: './src/extendedUI.html',
+      filename: 'extendedUI.html',
+      chunks: ['extendedUI'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Home Page',
+      template: './src/home.html',
+      filename: 'home.html',
+      chunks: ['home'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Info Page',
+      template: './src/info.html',
+      filename: 'info.html',
+      chunks: ['info'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Menu Page',
+      template: './src/menu.html',
+      filename: 'menu.html',
+      chunks: ['menuTab'],
+    }),
+  ],       
   module: {
     rules: [
       {
