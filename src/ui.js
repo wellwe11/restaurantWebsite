@@ -93,8 +93,6 @@ export const secondContentContainer = ManageAttributes(
   }
 );
 
-scrollState(content, secondContent);
-
 export const footer = ManageAttributes("footer", content.el, "Robin Ryan", {
   display: "flex",
   justifyContent: "center",
@@ -134,3 +132,4 @@ export const smallerWindow = () => {
 };
 
 smallerWindow();
+scrollState(content, secondContent);

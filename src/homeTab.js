@@ -7,14 +7,7 @@ import CompoPics from "./backgroundImages/compos.png";
 import IcreCream from "./icons/iceCream.png";
 import Sunglasses from "./icons/sunglasses.png";
 
-export const homeItemOne = createMenuItem(
-  "",
-  "#ab3434",
-  "100%",
-  "",
-  "5px",
-  "scroll"
-);
+export const homeItemOne = createMenuItem("", "#ab3434", "100%", "", "5px");
 export const homeItemTwo = createMenuItem("", "#f7e8d3", "100%", "5px", "5px");
 export const homeItemThree = createMenuItem("", "#ab3434", "100%", "5px", "");
 const randomText = `

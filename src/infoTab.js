@@ -29,7 +29,7 @@ export const itemOneLeftBar = ManageAttributes("div", infoItemOne.el, "", {
 export const iconOneLeft = ManageAttributes("div", itemOneLeftBar.el, "", {
   height: "100px",
   width: "100px",
-  backgroundImage: `url(${"something"})`,
+  //   backgroundImage: `url(${"something"})`,
   backgroundSize: "100px",
   marginLeft: "20px",
   marginTop: "50px",
@@ -48,7 +48,7 @@ export const iconOneCenter = ManageAttributes("div", itemOneCenterBar.el, "", {
   height: "50%",
   width: "90%",
 
-  backgroundImage: `url(${"something"})`,
+  //   backgroundImage: `url(${"something"})`,
   backgroundSize: "400px",
   backgroundRepeat: "no-repeat",
 
@@ -80,7 +80,7 @@ export const itemOneRightBar = ManageAttributes("div", infoItemOne.el, "", {
 export const iconOneRight = ManageAttributes("div", itemOneRightBar.el, "", {
   height: "100px",
   width: "100px",
-  backgroundImage: `url(${"something"})`,
+  //   backgroundImage: `url(${"something"})`,
   backgroundSize: "100px",
   marginLeft: "30px",
   marginTop: "200px",
@@ -91,7 +91,7 @@ export const itemThreeLeftBar = ManageAttributes("div", infoItemThree.el, "", {
   width: "23%",
   height: "100%",
   backgroundColor: "#ab3434",
-  backgroundImage: `url(${"something"})`,
+  //   backgroundImage: `url(${"something"})`,
   backgroundSize: "100px",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "90px",
@@ -127,7 +127,7 @@ export const itemThreeRightBar = ManageAttributes("div", infoItemThree.el, "", {
   width: "23%",
   height: "100%",
   backgroundColor: "#ab3434",
-  backgroundImage: `url(${"something"})`,
+  //   backgroundImage: `url(${"something"})`,
   backgroundSize: "100px",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "10px 109px",
